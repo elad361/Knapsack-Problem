@@ -6,7 +6,6 @@ using namespace std;
 
 void KnapsackProblem::addItems() {
     int counter = 0;
-    // cout << "Add items, to stop press ENTER" << endl;
     while (true) {
         int weight, value;
 
@@ -38,33 +37,22 @@ void KnapsackProblem::displayItems() {
     for (int i = 0; i < items.size(); i++) {
         cout <<"# " << setw(3) << setfill(' ') << left << (i + 1) << "Value: " << items[i].value  << ", Weight: " << items[i].weight << endl;
     }
-    /*for (const auto& item : items) {
-        cout << "Value: " << item.value  << ", Weight: " << item.weight << endl;
-    }*/
 }
 
-vector<Item> KnapsackProblem::solve() {
-    // weight limit
-    int weight;
-
-    cout << endl << "Enter weight limit:" << endl;
-    cin >> weight;
-
-    // to display itemd later
-    //Knapsack sack;
+vector<Item> KnapsackProblem::solve(int limit) {
 
     // number of items
     int n = items.size();
 
     // create matrix 
-    int m[n + 1][weight + 1];
+    int m[n + 1][limit + 1];
 
     cout << "solving..." << endl;
 
     //cout << endl << "*************************************************" << endl; //used to print matrix
 
     for (int i = 0; i <= n; ++i) {
-        for (int j = 0; j <= weight; ++j) {
+        for (int j = 0; j <= limit; ++j) {
             if (i == 0 || j == 0) {
                 m[i][j] = 0;
             }
@@ -79,9 +67,9 @@ vector<Item> KnapsackProblem::solve() {
     }
     //cout << "*************************************************" << endl << endl; //used to print matrix
 
-    cout << endl << "Maximum value in knapsack: " << m[n][weight] << endl;
+    cout << endl << "Maximum value in knapsack: " << m[n][limit] << endl;
 
-    int res = weight;
+    int res = limit;
     vector<Item> selected;
     for  (int i = n; i > 0; i--) {
         if (m[i][res] != m[i - 1][res]) {
@@ -90,6 +78,6 @@ vector<Item> KnapsackProblem::solve() {
         }
 
     }
-
+    
     return selected;
 }
