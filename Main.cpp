@@ -18,7 +18,13 @@ int main() {
     else prob.addVectorOfItems(items);
     
     prob.displayItems();
-    vector<Item> solotion = prob.solve();
+
+    // weight limit
+    int weight;
+    cout << endl << "Enter weight limit:" << endl;
+    cin >> weight;
+
+    vector<Item> solotion = prob.solve(weight);
     for (const auto& item : solotion) {
         cout << "Value: " << item.value  << ", Weight: " << item.weight << endl;
     }
