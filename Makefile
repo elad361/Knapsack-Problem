@@ -1,6 +1,5 @@
 # Makefile
 
-SOURCE_PATH = sources
 SOURCES = $(wildcard *.cpp)
 HEADERS = $(wildcard *.hpp)
 OBJECTS = $(patsubst %.cpp,%.o,$(SOURCES))
