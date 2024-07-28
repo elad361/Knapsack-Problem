@@ -28,5 +28,5 @@ public:
     void addVectorOfItems(const vector<Item>& vec);
 
     // Solve problem using Dynamic Programming
-    vector<Item> solve();
+    vector<Item> solve(int limit);
 };
