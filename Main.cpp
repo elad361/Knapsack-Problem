@@ -16,7 +16,6 @@ int main() {
     cin >> choice;
     if (choice == 1) prob.addItems();
     else prob.addVectorOfItems(items);
-    //prob.addItems();
     
     prob.displayItems();
     vector<Item> solotion = prob.solve();
